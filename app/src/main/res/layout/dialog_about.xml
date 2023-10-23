@@ -7,7 +7,14 @@
     android:orientation="vertical"
     android:padding="@dimen/vs_30">
 
-    <TextView
+    <ScrollView 
+		android:layout_width="fill_parent" 
+		android:layout_height="0.0dip" 
+		android:layout_marginLeft="@dimen/vs_20" 
+		android:layout_marginRight="@dimen/vs_20" 
+		android:layout_weight="1.0">
+		
+		<TextView
         android:layout_width="@dimen/vs_600"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/ts_50"
@@ -19,5 +26,7 @@
         android:text="本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\n\n打包分发请保留出处\nhttps://github.com/CatVodTVOfficial/TVBoxOSC"
         android:textColor="@color/color_FFFFFF"
         android:textSize="@dimen/ts_24" />
+		
+	</ScrollView>
 
 </LinearLayout>
