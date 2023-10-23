@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
+        <!--  进度条背景色   -->
         <shape>
             <solid android:color="@color/color_FFFFFF_40" />
         </shape>
@@ -8,6 +9,7 @@
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape>
+                <!--  进度条预缓存颜色   -->
                 <solid android:color="@color/color_3D3D3D_50" />
             </shape>
         </clip>
@@ -15,6 +17,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
+                <!--  进度条已走时间背景颜色   -->
                 <solid android:color="?attr/color_theme" />
             </shape>
         </clip>

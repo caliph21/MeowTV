@@ -43,7 +43,7 @@ public class HawkConfig {
     // Other Settings
     public static final String DOH_URL = "doh_url";         // DNS
     public static final String DEFAULT_PARSE = "parse_default";
-    public static final String PARSE_WEBVIEW = "parse_webview"; // true 系统 false xwalk
+    public static final String PARSE_WEBVIEW = "parse_webview"; // true=系统 false=xwalk
     public static final String SEARCH_VIEW = "search_view";     // 0 列表 1 缩略图
     public static final String SOURCES_FOR_SEARCH = "checked_sources_for_search";
     public static final String STORAGE_DRIVE_SORT = "storage_drive_sort";

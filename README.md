@@ -1,7 +1,8 @@
-# Box
-
+    # Box
 === Source Code - Editing the app default settings ===
 /src/main/java/com/github/tvbox/osc/base/App.java
+
+参考：\app\src\main\java\com\github\tvbox\osc\util\HawkConfig.java
 
     private void initParams() {
 
@@ -12,5 +13,13 @@
         putDefault(HawkConfig.HOME_NUM, 2);       // History Number
         putDefault(HawkConfig.DOH_URL, 2);        // DNS
         putDefault(HawkConfig.SEARCH_VIEW, 2);    // Text or Picture
-
     }
+    
+    
+=== Setting Up the Configuration Address ===
+- 数据源 > Input Source URL address
+- 直播 (Optional) > Input Live URL (http) address. If empty, will take Live URL from Source file
+- EPG (Optional) > Input EPG URL (http) address. If empty, will take EPG URL from Source file. If not found in Source file, default from http://epg.51zmt.top:8000/api/diyp/
+
+中文配置地址：
+C:\Users\Frank\Documents\GitHub\takagen99\app\src\main\res\values-zh\strings.xml

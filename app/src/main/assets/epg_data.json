@@ -2531,7 +2531,7 @@
     {
       "tvid": "317",
       "epgid": "LSTime电影台",
-      "name": "LS Time龙祥時代电影台",
+      "name": "LS Time龙祥時代电影台,LS Time龙祥时代电影台,龙祥时代电影台,龙祥电影台",
       "status": "1",
       "note": "LS Time龙祥時代电影台",
       "logo": "http://epg.51zmt.top:8000/tb1/gt/LSTIME.png"
@@ -3763,7 +3763,7 @@
     {
       "tvid": "471",
       "epgid": "天映经典",
-      "name": "天映经典频道,天映经典",
+      "name": "CCM天映经典电影,天映经典电影,天映经典频道,天映经典,CCM",
       "status": "1",
       "note": "天映经典频道",
       "logo": null
@@ -4263,6 +4263,14 @@
       "status": "1",
       "note": "EUROSPORT",
       "logo": "http://epg.51zmt.top:8000/tb1/gt/eurosport.png"
+    },
+    {
+      "tvid": "534",
+      "epgid": "Animax",
+      "name": "Animax",
+      "status": "1",
+      "note": "Animax",
+      "logo": "http://epg.51zmt.top:8000/tb1/gt/ANIMAX.png"
     },
     {
       "tvid": "534",
