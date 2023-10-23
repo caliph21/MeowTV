@@ -6,23 +6,31 @@
     android:background="@drawable/shape_dialog_bg_main"
     android:orientation="vertical"
     android:padding="@dimen/vs_30">
-
-		<TextView
+	
+	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/version_title"
-            android:textSize="@dimen/ts_24" />
+            android:text="打包时间："
+			android:textColor="@color/color_CC000000"
+            android:textSize="@dimen/ts_22" />
 
-		<TextView
+        <TextView
             android:id="@+id/app_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/ts_24" />
+			android:textColor="@color/color_CC000000"
+            android:textSize="@dimen/ts_22" />
+    </LinearLayout>
 
 		<TextView
 			android:layout_width="@dimen/vs_600"
 			android:layout_height="wrap_content"
-			android:lineSpacingExtra="@dimen/ts_50"
+			android:lineSpacingExtra="@dimen/ts_20"
 			android:lineSpacingMultiplier="0"
 			android:shadowColor="@color/color_000000_60"
 			android:shadowDx="0"
