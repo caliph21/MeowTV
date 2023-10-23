@@ -114,6 +114,9 @@ public class OkGoHelper {
             case 6: {
                 return "https://dns.quad9.net/dns-query";
             }
+			case 7: {
+                return "https://1.1.1.1/dns-query";
+            }
         }
         return "";
     }
@@ -126,6 +129,7 @@ public class OkGoHelper {
         dnsHttpsList.add("Google");
         dnsHttpsList.add("AdGuard");
         dnsHttpsList.add("Quad9");
+		dnsHttpsList.add("CloudFlare");
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkExoPlayer");
         if (Hawk.get(HawkConfig.DEBUG_OPEN, false)) {
