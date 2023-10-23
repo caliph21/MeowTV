@@ -31,7 +31,7 @@
 			android:layout_width="@dimen/vs_600"
 			android:layout_height="wrap_content"
 			android:lineSpacingExtra="@dimen/ts_20"
-			android:lineSpacingMultiplier="0"
+			android:lineSpacingMultiplier="0.3"
 			android:shadowColor="@color/color_000000_60"
 			android:shadowDx="0"
 			android:shadowDy="0"
