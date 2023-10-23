@@ -1,4 +1,4 @@
-name: Test selfbuild
+name: Dev self build
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
             branchName: main
           - userName: chengxue2020
             repoName: takagen99
-            branchName: Dev
+            branchName: dev
     steps:
       - name: Checkout
         uses: actions/checkout@v3
