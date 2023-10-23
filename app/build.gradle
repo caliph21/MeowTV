@@ -129,8 +129,8 @@ dependencies {
     implementation 'com.alivc.conan:AlivcConan:0.9.5'
     implementation 'xyz.doikki.android.dkplayer:dkplayer-ui:3.3.7'
     implementation 'xyz.doikki.android.dkplayer:videocache:3.3.7'
-	implementation 'com.github.xuexiangjys:XUpdate:2.1.2' 
-    implementation 'com.github.xuexiangjys.XUpdateAPI:xupdate-easy:1.0.1'
+	implementation 'com.github.xuexiangjys:XUpdate:2.1.2' //在线升级
+    implementation 'com.github.xuexiangjys.XUpdateAPI:xupdate-easy:1.0.1'  //在线升级
 	
     implementation('org.xwalk:xwalk_shared_library:23.53.589.4') {
         exclude group: 'com.android.support'
