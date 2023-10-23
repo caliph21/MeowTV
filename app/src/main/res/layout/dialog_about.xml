@@ -6,12 +6,6 @@
     android:background="@drawable/shape_dialog_bg_main"
     android:orientation="vertical"
     android:padding="@dimen/vs_30">
-    <ScrollView 
-		android:layout_width="fill_parent" 
-		android:layout_height="0.0dip" 
-		android:layout_marginLeft="@dimen/vs_20" 
-		android:layout_marginRight="@dimen/vs_20" 
-		android:layout_weight="1.0">
 
 		<TextView
             android:layout_width="wrap_content"
@@ -54,5 +48,4 @@
             android:textColor="@color/color_FFFFFF"
             android:textSize="@dimen/ts_22" />
 
-    </ScrollView>
 </LinearLayout>
