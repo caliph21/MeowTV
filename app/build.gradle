@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 def static buildTime() {
-    return new Date().format("yyyyMMdd_HHmm", TimeZone.getTimeZone("GMT+08:00"))
+    return new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone("GMT+08:00"))
 }
 
 def appName = "TVBox_takagen99"
@@ -12,11 +12,11 @@ android {
     flavorDimensions "abi"
 
     defaultConfig {
-        applicationId 'com.github.tvbox.osc.tk'
+        applicationId 'com.github.tvbox.osc.tk.frank'
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.".concat(buildTime())
+        versionName "3.".concat(buildTime())
         multiDexEnabled true
         //设置room的Schema的位置
         javaCompileOptions {
