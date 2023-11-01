@@ -27,12 +27,9 @@ public class AboutDialog extends BaseDialog {
         });
     }
     private TextView appVersion;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         appVersion = (TextView)findViewById(R.id.app_version);
         appVersion.setText(BuildConfig.VERSION_NAME);
-
     }
 }
