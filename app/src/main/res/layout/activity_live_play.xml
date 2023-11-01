@@ -216,7 +216,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:gravity="center"
-                android:text="No Information…"
+                android:text="@string/act_no_EPG_information"
                 android:textColor="@color/color_FFFFFF"
                 android:visibility="gone" />
 
@@ -472,7 +472,7 @@
                     android:shadowDy="0"
                     android:shadowRadius="3"
                     android:singleLine="true"
-                    android:text="No Information"
+                    android:text="@string/act_no_EPG_information"
                     android:textColor="@color/color_FFFFFF"
                     android:textSize="@dimen/ts_20"
                     android:textStyle="bold" />
@@ -525,7 +525,7 @@
                     android:shadowDy="0"
                     android:shadowRadius="3"
                     android:singleLine="true"
-                    android:text="No Information"
+                    android:text="@string/act_no_EPG_information"
                     android:textColor="@color/color_FFFFFF"
                     android:textSize="@dimen/ts_20"
                     android:textStyle="normal" />
