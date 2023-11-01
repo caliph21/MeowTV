@@ -1409,6 +1409,13 @@
                             android:layout_weight="1" />
 
                         <TextView
+							android:textSize="@dimen/ts_24" 
+							android:textColor="@android:color/white" 
+							android:layout_width="wrap_content" 
+							android:layout_height="wrap_content" 
+							android:text="@string/mn_Version" />
+							
+						<TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/vs_10"

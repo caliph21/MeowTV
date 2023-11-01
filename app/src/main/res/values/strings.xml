@@ -172,6 +172,11 @@
     <string name="exo_track_bitrate">%1$.2f Mbps</string>
     <string name="exo_item_list">%1$s，%2$s</string>
 
+	// About
+	<string name="version_title">English Ver.</string>
+	<string name="mn_Version">20231101-0006</string>
+	<string name="dia_about">This software only provides aggregated display functions, all resources come from the Internet, and the software does not participate in any content production, upload, storage, download,etc.The software is only for learning reference, please delete it within 24 hours after installation. \n\nPlease keep the source after package distribution\nhttps://github.com/CatVodTVOfficial/TVBoxOSC</string>
+
     <string-array name="doh_name">
         <item>System</item>
         <item>Tencent</item>
