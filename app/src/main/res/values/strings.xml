@@ -54,7 +54,6 @@
     <string name="mn_icon">Button</string>
     <string name="mn_history_num">History</string>
 	<string name="mn_live_boot">Autostart Live</string>
-    <string name="mn_live_boot">Autostart Live</string>
     <string name="mn_wall_change">Wallpaper</string>
     <string name="mn_wall_load">Loading Wallpaper</string>
     <string name="mn_wall_reset">Reset</string>
