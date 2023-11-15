@@ -81,6 +81,6 @@ jobs:
           body: ${{ env.commit }}
           files: |
             TVBoxOSC/apk/*
-            TVBoxOSC/TVBox_takagen99_${{ env.tag }}-${{ env.commitS }}-source.zip
+            TVBoxOSC/${{ env.commitS }}-source.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
