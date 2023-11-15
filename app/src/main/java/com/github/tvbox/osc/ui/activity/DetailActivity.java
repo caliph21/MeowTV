@@ -30,7 +30,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
+import com.blankj.utilcode.util.ServiceUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.github.tvbox.osc.R;
 import com.github.tvbox.osc.api.ApiConfig;
@@ -42,6 +42,7 @@ import com.github.tvbox.osc.bean.VodInfo;
 import com.github.tvbox.osc.cache.RoomDataManger;
 import com.github.tvbox.osc.event.RefreshEvent;
 import com.github.tvbox.osc.player.controller.VodController;
+import com.github.tvbox.osc.server.PlayService;
 import com.github.tvbox.osc.ui.adapter.SeriesAdapter;
 import com.github.tvbox.osc.ui.adapter.SeriesFlagAdapter;
 import com.github.tvbox.osc.ui.dialog.PushDialog;
@@ -125,11 +126,20 @@ public class DetailActivity extends BaseActivity {
     private V7GridLayoutManager mGridViewLayoutMgr = null;
 
     private BroadcastReceiver pipActionReceiver;
-    private static final int PIP_BOARDCAST_ACTION_PREV = 0;
-    private static final int PIP_BOARDCAST_ACTION_PLAYPAUSE = 1;
-    private static final int PIP_BOARDCAST_ACTION_NEXT = 2;
+    public static final String BROADCAST_ACTION = "VOD_CONTROL";
+    public static final int BROADCAST_ACTION_PREV = 0;
+    public static final int BROADCAST_ACTION_PLAYPAUSE = 1;
+    public static final int BROADCAST_ACTION_NEXT = 2;
 
-    private ImageView tvPlayUrl;
+    private ImageView tvPlayUrl;    
+    /**
+     * Home键广播,用于触发后台服务
+     */
+    private BroadcastReceiver mHomeKeyReceiver;
+    /**
+     * 是否开启后台播放标记,不在广播开启,onPause根据标记开启
+     */
+    boolean openBackgroundPlay;
 
     @Override
     protected int getLayoutResID() {
@@ -139,9 +149,41 @@ public class DetailActivity extends BaseActivity {
     @Override
     protected void init() {
         EventBus.getDefault().register(this);
+        initReceiver();
         initView();
         initViewModel();
         initData();
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        openBackgroundPlay = false;
+        playServerSwitch(false);
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (openBackgroundPlay){
+            playServerSwitch(true);
+        }
+    }
+    
+    private void initReceiver(){
+        // 注册广播接收器
+        if (mHomeKeyReceiver == null) {
+            mHomeKeyReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    if (action != null && action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                        openBackgroundPlay = Hawk.get(HawkConfig.BACKGROUND_PLAY_TYPE, 0) == 1 && playFragment.getPlayer() != null && playFragment.getPlayer().isPlaying();
+                    }
+                }
+            };
+            registerReceiver(mHomeKeyReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        }
     }
 
     private void initView() {
@@ -833,7 +875,13 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+    	registerActionReceiver(false);
         super.onDestroy();
+        // 注销广播接收器
+        if (mHomeKeyReceiver != null) {
+            unregisterReceiver(mHomeKeyReceiver);
+            mHomeKeyReceiver = null;
+        }
         try {
             if (searchExecutorService != null) {
                 searchExecutorService.shutdownNow();
@@ -848,14 +896,16 @@ public class DetailActivity extends BaseActivity {
         OkGo.getInstance().cancelTag("pushVod");
         EventBus.getDefault().unregister(this);
         if (!showPreview) Thunder.stop(true);
-    }
-
-    boolean PiPON = Hawk.get(HawkConfig.PIC_IN_PIC, false);
+    }    
 
     @Override
     public void onUserLeaveHint() {
         // takagen99 : Additional check for external player
-        if (supportsPiPMode() && showPreview && !playFragment.extPlay && PiPON) {
+        if (supportsPiPMode() && showPreview && !playFragment.extPlay && Hawk.get(HawkConfig.BACKGROUND_PLAY_TYPE, 0) == 2 ) {
+        	// 创建一个Intent对象，模拟按下Home键
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
             // Calculate Video Resolution
             int vWidth = playFragment.mVideoView.getVideoSize()[0];
             int vHeight = playFragment.mVideoView.getVideoSize()[1];
@@ -869,19 +919,23 @@ public class DetailActivity extends BaseActivity {
                 ratio = new Rational(16, 9);
             }
             List<RemoteAction> actions = new ArrayList<>();
-            actions.add(generateRemoteAction(android.R.drawable.ic_media_previous, PIP_BOARDCAST_ACTION_PREV, "Prev", "Play Previous"));
-            actions.add(generateRemoteAction(android.R.drawable.ic_media_play, PIP_BOARDCAST_ACTION_PLAYPAUSE, "Play", "Play/Pause"));
-            actions.add(generateRemoteAction(android.R.drawable.ic_media_next, PIP_BOARDCAST_ACTION_NEXT, "Next", "Play Next"));
+            actions.add(generateRemoteAction(android.R.drawable.ic_media_previous, BROADCAST_ACTION_PREV, "Prev", "Play Previous"));
+            actions.add(generateRemoteAction(android.R.drawable.ic_media_play, BROADCAST_ACTION_PLAYPAUSE, "Play", "Play/Pause"));
+            actions.add(generateRemoteAction(android.R.drawable.ic_media_next, BROADCAST_ACTION_NEXT, "Next", "Play Next"));
             PictureInPictureParams params = new PictureInPictureParams.Builder()
                     .setAspectRatio(ratio)
                     .setActions(actions).build();
             if (!fullWindows) {
-                toggleFullPreview();
-            }
+                    toggleFullPreview();
+                }
             enterPictureInPictureMode(params);
             playFragment.getVodController().hideBottom();
-        }
-        super.onUserLeaveHint();
+            playFragment.getPlayer().postDelayed(() -> {
+                if (!playFragment.getPlayer().isPlaying()){
+                    playFragment.getVodController().togglePlay();
+                }
+            },400);
+        }        
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -890,39 +944,68 @@ public class DetailActivity extends BaseActivity {
                 PendingIntent.getBroadcast(
                         DetailActivity.this,
                         actionCode,
-                        new Intent("PIP_VOD_CONTROL").putExtra("action", actionCode),
+                        new Intent(BROADCAST_ACTION).putExtra("action", actionCode),
                         0);
         final Icon icon = Icon.createWithResource(DetailActivity.this, iconResId);
         return (new RemoteAction(icon, title, desc, intent));
     }
 
-    @Override
-    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
-        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
-        if (supportsPiPMode() && isInPictureInPictureMode) {
+    /**
+     * 事件接收广播(画中画/后台播放点击事件)
+     * @param isRegister 注册/注销
+     */
+    private void registerActionReceiver(boolean isRegister){
+        if (isRegister) {
             pipActionReceiver = new BroadcastReceiver() {
 
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    if (intent == null || !intent.getAction().equals("PIP_VOD_CONTROL") || playFragment.getVodController() == null) {
+                    if (intent == null || !intent.getAction().equals(BROADCAST_ACTION) || playFragment.getVodController() == null) {
                         return;
                     }
 
-                    int currentStatus = intent.getIntExtra("action", 1);
-                    if (currentStatus == PIP_BOARDCAST_ACTION_PREV) {
+                    int currentStatus = intent.getIntExtra("action", 1);                    
+                    if (currentStatus == BROADCAST_ACTION_PREV) {
                         playFragment.playPrevious();
-                    } else if (currentStatus == PIP_BOARDCAST_ACTION_PLAYPAUSE) {
+                    } else if (currentStatus == BROADCAST_ACTION_PLAYPAUSE) {
                         playFragment.getVodController().togglePlay();
-                    } else if (currentStatus == PIP_BOARDCAST_ACTION_NEXT) {
+                    } else if (currentStatus == BROADCAST_ACTION_NEXT) {
                         playFragment.playNext(false);
                     }
                 }
             };
-            registerReceiver(pipActionReceiver, new IntentFilter("PIP_VOD_CONTROL"));
+            registerReceiver(pipActionReceiver, new IntentFilter(BROADCAST_ACTION));
 
         } else {
-            unregisterReceiver(pipActionReceiver);
-            pipActionReceiver = null;
+            if (pipActionReceiver!=null){
+                unregisterReceiver(pipActionReceiver);
+                pipActionReceiver = null;
+            }
+            if (playFragment.getPlayer().isPlaying()){
+                playFragment.getVodController().togglePlay();
+            }
+        }
+    }
+    
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
+        registerActionReceiver(supportsPiPMode() && isInPictureInPictureMode);
+    }
+    
+    /**
+     * 后台播放服务开关,开启时注册操作广播,关闭时注销
+     */
+    private void playServerSwitch(boolean open){
+        if (open){
+            VodInfo.VodSeries vod = vodInfo.seriesMap.get(vodInfo.playFlag).get(vodInfo.playIndex);
+            PlayService.start(playFragment.getPlayer(),vodInfo.name+"&&"+vod.name);
+            registerActionReceiver(true);
+        }else {
+            if (ServiceUtils.isServiceRunning(PlayService.class)){
+                PlayService.stop();
+                registerActionReceiver(false);
+            }
         }
     }
 
