@@ -316,9 +316,7 @@ public class VodController extends BaseController {
         public void run() {
             Date date = new Date();
             SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
-            mPlayPauseTime.setText(timeFormat.format(date));
-            String speed = PlayerHelper.getDisplaySpeed(mControlWrapper.getTcpSpeed());
-            mPlayLoadNetSpeedRightTop.setText(speed);
+            mPlayPauseTime.setText(timeFormat.format(date));                        
             mTime.setText(timeFormat.format(date));
             mHandler.postDelayed(this, 1000);
         }
@@ -452,7 +450,11 @@ public class VodController extends BaseController {
             public boolean onTouch(View v, MotionEvent event) {
                 if (isLock) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        showLockView();
+                        if(mLockView.getVisibility() == View.VISIBLE){
+                            mLockView.setVisibility(GONE);
+                        }else{
+                            showLockView();
+                        }
                     }
                 }
                 return isLock;
@@ -1566,7 +1568,7 @@ public class VodController extends BaseController {
     
     private class LockRunnable implements Runnable {@Override
         public void run() {
-            mLockView.setVisibility(INVISIBLE);
+            mLockView.setVisibility(GONE);
         }
     }
 
