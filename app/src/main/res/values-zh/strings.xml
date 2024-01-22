@@ -184,7 +184,7 @@
 
 	// About
 	<string name="version_title">版本 </string>
-	<string name="mn_Version">20240121-1934</string>
-	<string name="dia_about">版本：20240121-1934\n更新日志：\n正确加载301,302等跳转的图片链接\n更新room database\n搜索历史\n增加长按简介复制简介内容（方便复制阿里地址进行推送和分享）\n\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\n\n打包分发请保留出处\nhttps://github.com/CatVodTVOfficial/TVBoxOSC</string>
+	<string name="mn_Version">20240122-2100</string>
+	<string name="dia_about">版本：20240122-2100\n更新日志：\n优化搜索历史\n修复release编译失败\nupdate AGP to 8.2\n\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\n\n打包分发请保留出处\nhttps://github.com/CatVodTVOfficial/TVBoxOSC</string>
 
 </resources>
