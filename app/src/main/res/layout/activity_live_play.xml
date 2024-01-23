@@ -380,7 +380,6 @@
                     android:paddingRight="@dimen/vs_8"
                     android:paddingBottom="@dimen/vs_5"
                     android:marqueeRepeatLimit="marquee_forever"
-                    android:paddingRight="@dimen/vs_20"
                     android:shadowColor="@color/color_FF000000"
                     android:shadowDx="0"
                     android:shadowDy="0"
