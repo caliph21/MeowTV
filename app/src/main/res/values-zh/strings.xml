@@ -188,7 +188,7 @@
 
 	// About
 	<string name="version_title">版本 </string>
-	<string name="mn_Version">20240128-2100</string>
-	<string name="dia_about">版本：20240128-2100\n更新日志：\nijk缓存开关\n防止播放界面调用外部软件打开视频时videoURL空指针异常\n清理代码\n\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\n\n打包分发请保留出处\nhttps://github.com/CatVodTVOfficial/TVBoxOSC</string>
+	<string name="mn_Version">20240129-0046</string>
+	<string name="dia_about">版本：20240129-0046\n更新日志：\n选集分组\n\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\n\n打包分发请保留出处\nhttps://github.com/CatVodTVOfficial/TVBoxOSC</string>
 
 </resources>
