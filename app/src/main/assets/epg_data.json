@@ -566,7 +566,7 @@
       "name": "河北卫视",
       "status": "1",
       "note": "河北卫视",
-      "logo": "https://live.fanmingming.com/tv/河北卫视.png"
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北卫视.png"
     },
     {
       "tvid": "72",
@@ -1811,7 +1811,7 @@
     {
       "tvid": "227",
       "epgid": "北京纪实科教",
-      "name": "北京纪实科教,纪实科教",
+      "name": "北京纪实科教,纪实科教,冬奥纪实",
       "status": "1",
       "note": "北京纪实科教",
       "logo": "https://live.fanmingming.com/tv/北京纪实科教.png"
@@ -4921,12 +4921,92 @@
       "logo": "http://epg.51zmt.top:8000/tb1/gt/ANIMAX.png"
     },
     {
-      "tvid": "534",
-      "epgid": "Animax",
-      "name": "Animax",
+      "tvid": "616",
+      "epgid": "河北经济",
+      "name": "河北经济生活,河北经济",
       "status": "1",
-      "note": "Animax",
-      "logo": "http://epg.51zmt.top:8000/tb1/gt/ANIMAX.png"
+      "note": "河北经济",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北经济生活频道.png"
+    },
+    {
+      "tvid": "617",
+      "epgid": "河北都市",
+      "name": "河北都市",
+      "status": "1",
+      "note": "河北都市",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北都市频道.png"
+    },
+    {
+      "tvid": "618",
+      "epgid": "河北影视剧",
+      "name": "河北影视剧",
+      "status": "1",
+      "note": "河北影视剧",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北影视剧频道.png"
+    },
+    {
+      "tvid": "619",
+      "epgid": "河北少儿科教",
+      "name": "河北少儿科教",
+      "status": "1",
+      "note": "河北少儿科教",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北少儿科教频道.png"
+    },
+    {
+      "tvid": "620",
+      "epgid": "河北公共",
+      "name": "河北公共",
+      "status": "1",
+      "note": "河北公共",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北公共频道.png"
+    },
+    {
+      "tvid": "621",
+      "epgid": "河北农民",
+      "name": "河北农民",
+      "status": "1",
+      "note": "河北农民",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北农民频道.png"
+    },
+    {
+      "tvid": "622",
+      "epgid": "河北杂技",
+      "name": "河北杂技",
+      "status": "1",
+      "note": "河北杂技",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/河北杂技频道.png"
+    },
+    {
+      "tvid": "623",
+      "epgid": "石家庄新闻综合",
+      "name": "石家庄新闻综合",
+      "status": "1",
+      "note": "石家庄新闻综合",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/石家庄新闻综合频道.png"
+    },
+    {
+      "tvid": "624",
+      "epgid": "石家庄娱乐",
+      "name": "石家庄娱乐",
+      "status": "1",
+      "note": "石家庄娱乐",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/石家庄娱乐频道.png"
+    },
+    {
+      "tvid": "625",
+      "epgid": "石家庄生活",
+      "name": "石家庄生活",
+      "status": "1",
+      "note": "石家庄生活",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/石家庄生活频道.png"
+    },
+    {
+      "tvid": "626",
+      "epgid": "石家庄都市",
+      "name": "石家庄都市",
+      "status": "1",
+      "note": "石家庄都市",
+      "logo": "https://chengxue2020.github.io/Logos/大陆/河北/石家庄都市频道.png"
     }
   ]
 }
