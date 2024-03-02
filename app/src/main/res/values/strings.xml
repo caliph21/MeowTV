@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MaoTV</string>
+    <string name="app_name">MeowTV</string>
     <string name="app_home">Home</string>
     <string name="app_source">https://chengxue2020.github.io/Cat-ports/main.json</string>
 
