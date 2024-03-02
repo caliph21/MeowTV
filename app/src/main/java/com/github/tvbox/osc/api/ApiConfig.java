@@ -409,7 +409,7 @@ public class ApiConfig {
                         putLiveHistory(extUrlFix);
                         // Overwrite with Live URL from Settings
                         if (StringUtils.isBlank(liveURL)) {
-                            Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
+                            //Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
                         } else {
                             extUrlFix = liveURL;
                         }
@@ -429,7 +429,7 @@ public class ApiConfig {
                         putEPGHistory(epg);
                         // Overwrite with EPG URL from Settings
                         if (StringUtils.isBlank(epgURL)) {
-                            Hawk.put(HawkConfig.EPG_URL, epg);
+                            //Hawk.put(HawkConfig.EPG_URL, epg);
                         } else {
                             Hawk.put(HawkConfig.EPG_URL, epgURL);
                         }
