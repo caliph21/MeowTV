@@ -132,8 +132,8 @@ public class ApiConfig {
         // Embedded Source : Update in Strings.xml if required
         String apiUrl = Hawk.get(HawkConfig.API_URL, HomeActivity.getRes().getString(R.string.app_source));
         if (apiUrl.isEmpty()) {
-            //callback.error("源地址为空");
-            app_source="http://miaotvs.cn/neow";
+            callback.error("源地址为空");
+            //app_source="http://miaotvs.cn/neow";
             return;
         }
         File cache = new File(App.getInstance().getFilesDir().getAbsolutePath() + "/" + MD5.encode(apiUrl));
