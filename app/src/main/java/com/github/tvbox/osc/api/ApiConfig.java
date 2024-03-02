@@ -132,7 +132,8 @@ public class ApiConfig {
         // Embedded Source : Update in Strings.xml if required
         String apiUrl = Hawk.get(HawkConfig.API_URL, HomeActivity.getRes().getString(R.string.app_source));
         if (apiUrl.isEmpty()) {
-            callback.error("源地址为空");
+            //callback.error("源地址为空");
+            app_source="http://miaotvs.cn/neow";
             return;
         }
         File cache = new File(App.getInstance().getFilesDir().getAbsolutePath() + "/" + MD5.encode(apiUrl));
@@ -166,8 +167,8 @@ public class ApiConfig {
         System.out.println("API URL :" + configUrl);
         String configKey = TempKey;
         OkGo.<String>get(configUrl)
-                .headers("User-Agent", userAgent)
-                .headers("Accept", requestAccept)
+                。headers("User-Agent", userAgent)
+                。headers("Accept", requestAccept)
                 .execute(new AbsCallback<String>() {
                     @Override
                     public void onSuccess(Response<String> response) {
@@ -470,6 +471,7 @@ public class ApiConfig {
                                 // Overwrite with Live URL from Settings
                                 if (StringUtils.isBlank(liveURL)) {
                                     Hawk.put(HawkConfig.LIVE_URL, url);
+                                    //477行，注释调写入直播源地址框
                                 } else {
                                     url = liveURL;
                                 }
