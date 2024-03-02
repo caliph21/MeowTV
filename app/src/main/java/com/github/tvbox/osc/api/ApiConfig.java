@@ -167,8 +167,8 @@ public class ApiConfig {
         System.out.println("API URL :" + configUrl);
         String configKey = TempKey;
         OkGo.<String>get(configUrl)
-                。headers("User-Agent", userAgent)
-                。headers("Accept", requestAccept)
+                .headers("User-Agent", userAgent)
+                .headers(userAgent;"Accept", requestAccept)
                 .execute(new AbsCallback<String>() {
                     @Override
                     public void onSuccess(Response<String> response) {
