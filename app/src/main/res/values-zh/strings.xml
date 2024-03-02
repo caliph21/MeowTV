@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MeowTV</string>
+    <string name="app_name">喵MeowTV</string>
     <string name="app_home">首页</string>
     <string name="app_source">http://饭太硬.top/tv</string>
 
