@@ -458,7 +458,7 @@ public class ApiConfig {
                                 putEPGHistory(epg);
                                 // Overwrite with EPG URL from Settings
                                 if (StringUtils.isBlank(epgURL)) {
-                                    //Hawk.put(HawkConfig.EPG_URL, epg);
+                                    Hawk.put(HawkConfig.EPG_URL, epg);
                                     //注释调写入EPG源地址框
                                 } else {
                                     Hawk.put(HawkConfig.EPG_URL, epgURL);
@@ -472,7 +472,7 @@ public class ApiConfig {
                                 // Overwrite with Live URL from Settings
                                 if (StringUtils.isBlank(liveURL)) {
                                     //注释调写入直播源地址框
-                                    //Hawk.put(HawkConfig.LIVE_URL, url);
+                                    Hawk.put(HawkConfig.LIVE_URL, url);
                                 } else {
                                     url = liveURL;
                                 }
