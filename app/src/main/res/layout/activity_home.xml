@@ -41,7 +41,7 @@
             android:nextFocusRight="@id/tvWifi"
             android:nextFocusDown="@id/mGridViewCategory"
             android:singleLine="true"
-            android:text="@values/string/app_name"
+            android:text="@string/app_name"
             android:textAlignment="gravity"
             android:textColor="@color/font_home_selector"
             android:textSize="@dimen/ts_30"
