@@ -376,11 +376,12 @@ public class ApiConfig {
         }
 
         // takagen99: Check if Live URL is setup in Settings, if no, get from File Config
-        liveChannelGroupList.clear();           //修复从后台切换重复加载频道列表
+        liveChannelGroupList.clear();           
+        //修复从后台切换重复加载频道列表
         String liveURL = Hawk.get(HawkConfig.LIVE_URL, "");
         String epgURL  = Hawk.get(HawkConfig.EPG_URL, "");
-
         String liveURL_final = null;
+        
         try {
             if (infoJson.has("lives") && infoJson.get("lives").getAsJsonArray() != null) {
                 JsonObject livesOBJ = infoJson.get("lives").getAsJsonArray().get(0).getAsJsonObject();
@@ -409,7 +410,7 @@ public class ApiConfig {
                         putLiveHistory(extUrlFix);
                         // Overwrite with Live URL from Settings
                         if (StringUtils.isBlank(liveURL)) {
-                            Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
+                            //Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
                         } else {
                             extUrlFix = liveURL;
                         }
@@ -423,13 +424,16 @@ public class ApiConfig {
                     }
 
                     // takagen99 : Getting EPG URL from File Config & put into Settings
+                    // 将url实时捕获到配置中
                     if (livesOBJ.has("epg")) {
                         String epg = livesOBJ.get("epg").getAsString();
                         System.out.println("EPG URL :" + epg);
                         putEPGHistory(epg);
                         // Overwrite with EPG URL from Settings
+                        // 从设置中的覆盖EPG_URL(注:epgURL是内置接口数据)
+                        // isBlank返回true表示为空或只包含空白字符
                         if (StringUtils.isBlank(epgURL)) {
-                            Hawk.put(HawkConfig.EPG_URL, epg);
+                            //Hawk.put(HawkConfig.EPG_URL, epg);
                         } else {
                             Hawk.put(HawkConfig.EPG_URL, epgURL);
                         }
@@ -443,6 +447,7 @@ public class ApiConfig {
                 } else {
 
                     // if FongMi Live URL Formatting exists
+                    // 如果存在FongMi Live URL格式
                     if (!lives.contains("type")) {
                         loadLives(infoJson.get("lives").getAsJsonArray());
                     } else {
