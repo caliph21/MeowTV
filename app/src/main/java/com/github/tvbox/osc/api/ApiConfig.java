@@ -464,8 +464,9 @@ public class ApiConfig {
                                 putEPGHistory(epg);
                                 // Overwrite with EPG URL from Settings
                                 if (StringUtils.isBlank(epgURL)) {
-                                    //Hawk.put(HawkConfig.EPG_URL, epg);
-                                    //注释调写入EPG源地址框
+                                    Hawk.put(HawkConfig.EPG_URL, epg);
+                                    //*注释调写入EPG源地址框
+                                    //*注释True会添加到历史列表，live中 空会空，有则有
                                 } else {
                                     Hawk.put(HawkConfig.EPG_URL, epgURL);
                                 }
@@ -473,12 +474,14 @@ public class ApiConfig {
 
                             if (url.startsWith("http")) {
                                 // takagen99: Capture Live URL into Settings
+                                // 将实时URL捕获到设置中
                                 System.out.println("Live URL :" + url);
                                 putLiveHistory(url);
                                 // Overwrite with Live URL from Settings
                                 if (StringUtils.isBlank(liveURL)) {
-                                    //注释调写入直播源地址框
-                                    //Hawk.put(HawkConfig.LIVE_URL, url);
+                                    //*注释调写入直播源地址框，
+                                    //*注释True会添加到历史列表，live中 空会空，有则有
+                                    Hawk.put(HawkConfig.LIVE_URL, url);
                                 } else {
                                     url = liveURL;
                                 }
