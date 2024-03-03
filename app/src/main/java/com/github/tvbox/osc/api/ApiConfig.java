@@ -410,7 +410,7 @@ public class ApiConfig {
                         putLiveHistory(extUrlFix);
                         // Overwrite with Live URL from Settings
                         if (StringUtils.isBlank(liveURL)) {
-                            //Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
+                            Hawk.put(HawkConfig.LIVE_URL, extUrlFix);
                         } else {
                             extUrlFix = liveURL;
                         }
@@ -433,7 +433,7 @@ public class ApiConfig {
                         // 从设置中的覆盖EPG_URL(注:epgURL是内置接口数据)
                         // isBlank返回true表示为空或只包含空白字符
                         if (StringUtils.isBlank(epgURL)) {
-                            //Hawk.put(HawkConfig.EPG_URL, epg);
+                            Hawk.put(HawkConfig.EPG_URL, epg);
                         } else {
                             Hawk.put(HawkConfig.EPG_URL, epgURL);
                         }
@@ -457,13 +457,14 @@ public class ApiConfig {
                             String url = fengMiLives.get("url").getAsString();
 
                             // takagen99 : Getting EPG URL from File Config & put into Settings
+                            // 从文件配置获取epg-url & 放入设置中
                             if (fengMiLives.has("epg")) {
                                 String epg = fengMiLives.get("epg").getAsString();
                                 System.out.println("EPG URL :" + epg);
                                 putEPGHistory(epg);
                                 // Overwrite with EPG URL from Settings
                                 if (StringUtils.isBlank(epgURL)) {
-                                    Hawk.put(HawkConfig.EPG_URL, epg);
+                                    //Hawk.put(HawkConfig.EPG_URL, epg);
                                     //注释调写入EPG源地址框
                                 } else {
                                     Hawk.put(HawkConfig.EPG_URL, epgURL);
@@ -477,7 +478,7 @@ public class ApiConfig {
                                 // Overwrite with Live URL from Settings
                                 if (StringUtils.isBlank(liveURL)) {
                                     //注释调写入直播源地址框
-                                    Hawk.put(HawkConfig.LIVE_URL, url);
+                                    //Hawk.put(HawkConfig.LIVE_URL, url);
                                 } else {
                                     url = liveURL;
                                 }
