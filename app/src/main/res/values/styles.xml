@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_32364E</item>
         <item name="colorPrimaryDark">@color/color_32364E_40</item>
-        <item name="colorAccent">?attr/color_theme</item>
+        <item name="colorAccent">@color/color_FFFFFF_50</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
