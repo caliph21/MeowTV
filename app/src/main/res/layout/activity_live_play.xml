@@ -332,7 +332,7 @@
                     android:layout_marginLeft="@dimen/vs_20"
                     android:layout_marginTop="@dimen/vs_5"
                     android:layout_marginBottom="@dimen/vs_5"
-                    android:background="?attr/color_theme" />
+                    android:background="@color/color_FFFFFF_50" />
 
                 <TextView
                     android:id="@+id/tv_channel_number"
