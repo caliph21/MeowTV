@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId 'com.github.tvbox.osc.maotv'
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "3.".concat(buildTime())
