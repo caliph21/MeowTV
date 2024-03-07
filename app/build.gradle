@@ -7,12 +7,12 @@ def static buildTime() {
 }
 
 android {
-    compileSdk 30
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.github.tvbox.osc.maotv'
-        minSdkVersion 16
-        targetSdkVersion 26
+        minSdkVersion 18
+        targetSdkVersion 28
         versionCode 1
         versionName "3.".concat(buildTime())
         multiDexEnabled true
